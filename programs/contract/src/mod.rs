@@ -1,2 +1,2 @@
 pub mod state;
-pub mod constant;
+pub mod constants;

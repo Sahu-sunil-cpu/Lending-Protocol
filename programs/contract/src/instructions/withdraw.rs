@@ -3,7 +3,6 @@ use anchor_spl::{associated_token::AssociatedToken, token::Token, token_interfac
 use std::f32::consts::E;
 use crate::state::{Bank, User};
 
-use crate::error::ErrorCode;
 
 
 #[derive(Accounts)]
@@ -93,7 +92,7 @@ pub fn process_withdraw(ctx: Context<Withdraw>, amount: u64) -> Result<()> {
 
     let decimals = ctx.accounts.mint.decimals;
 
-    token_interface::transfer_checked(cpi_ctx, amount, decimals);
+    token_interface::transfer_checked(cpi_ctx, amount, decimals)?;
 
     let bank = &mut ctx.accounts.bank;
 

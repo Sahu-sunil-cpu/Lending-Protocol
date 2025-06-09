@@ -58,7 +58,7 @@ pub fn process_deposit(ctx: Context<DepositAccount>, amount: u64) -> Result<()> 
  let cpi_ctx = CpiContext::new(cpi_program, transfer_cpi_accounts);
  let decimals = ctx.accounts.mint.decimals;
 
- token_interface::transfer_checked(cpi_ctx, amount, decimals);
+ token_interface::transfer_checked(cpi_ctx, amount, decimals)?;
 
  let bank = &mut ctx.accounts.bank;
 
